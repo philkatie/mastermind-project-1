@@ -113,9 +113,20 @@ function compareCodes() {
         playerGuess[3] === secretCode[3]) {
         document.querySelector('h2').innerText = 'You win!';
         gameOver = true;
+    } else if (guessNum === 8) {
+        document.querySelector('h2').innerText = 'You lose!';
+        gameOver = true;
     }
 
     ansNum = 1;
     guessNum ++;
+    playerGuess = [];
+    revealCode = [];
     // return revealCode;
+
+    if (gameOver === true) {
+        for (i = 1; i <=4; i++) {
+            document.getElementById(`sc${i}`).innerHTML = `<img src="${secretCode[i-1]}.jpeg">`
+        }
+    }
 }
