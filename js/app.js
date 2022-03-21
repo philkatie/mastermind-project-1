@@ -44,7 +44,8 @@ let revealCode = [];
 // setup event listeners
 
 document.querySelector('.answer-bank').addEventListener('click', handleClick);
-document.querySelector('button').addEventListener('click', compareCodes);
+document.querySelector('.submit').addEventListener('click', compareCodes);
+document.querySelector('.replay').addEventListener('click', init);
 
 // init function to start game
 function init() {
@@ -63,7 +64,13 @@ function init() {
     guessNum = 1;
     ansNum = 1;
     console.log(secretCode);
-    // document.querySelectorAll('.guess-row').innerHTML = "";
+    for (i = 1; i <= 4; i++) {
+        for (j = 1; j <=8; j++) {
+            document.getElementById(`g${j}a${i}`).innerHTML = '';
+            document.getElementById(`g${j}r${i}`).style.backgroundColor = 'white';
+        }
+        document.getElementById(`sc${i}`).innerHTML = '';
+    }
 }
 
 init();
@@ -84,7 +91,11 @@ function handleClick(e) {
 // comparing playerGuess to secretCode;
 
 function compareCodes() {
-    // if (playerGuess.length = 4) {
+
+    //need code to not submit early
+    //need code for reveal dupes
+
+    if (playerGuess.length = 4) {
         // let r = 1;
         playerGuess.forEach(function(elem, i) {
             // check for inclusion
@@ -97,7 +108,7 @@ function compareCodes() {
                 };
             } else revealCode.push('white');
         });
-    // }
+    }
     // sort alphabetically to conceal order
     revealCode.sort();
     console.log(revealCode);
