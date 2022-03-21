@@ -105,7 +105,16 @@ function compareCodes() {
     for (i = 1; i <= 4; i++) {
         document.getElementById(`g${guessNum}r${i}`).style.backgroundColor = revealCode[i-1];
     }
-    
+
+    if (
+        playerGuess[0] === secretCode[0] && 
+        playerGuess[1] === secretCode[1] && 
+        playerGuess[2] === secretCode[2] &&
+        playerGuess[3] === secretCode[3]) {
+        document.querySelector('h2').innerText = 'You win!';
+        gameOver = true;
+    }
+
     ansNum = 1;
     guessNum ++;
     // return revealCode;
