@@ -34,6 +34,7 @@
 
 // declare all state variables
 let guessNum = 1;
+let ansNum = 1;
 let gameOver = false;
 const choices = ["ts1", "ts2", "ts3", "ts4", "ts5", "ts6"];
 let secretCode = [];
@@ -59,7 +60,10 @@ function init() {
     }
     gameOver = false;
     playerGuess = [];
+    guessNum = 1;
+    ansNum = 1;
     console.log(secretCode);
+    // document.querySelectorAll('.guess-row').innerHTML = "";
 }
 
 init();
@@ -69,7 +73,10 @@ function handleClick(e) {
     if (e.target.tagName === "IMG") {
         if (playerGuess.length < 4) {
             playerGuess.push(e.target.id);
+            let currentGuess = document.getElementById(`g${guessNum}a${ansNum}`);
+            currentGuess.innerHTML = `<img src="${e.target.id}.jpeg">`
             console.log(playerGuess);
+            ansNum ++;
         }
     }
 }
@@ -78,6 +85,7 @@ function handleClick(e) {
 
 function compareCodes() {
     // if (playerGuess.length = 4) {
+        // let r = 1;
         playerGuess.forEach(function(elem, i) {
             // check for inclusion
             if (secretCode.includes(elem)) {
@@ -93,7 +101,12 @@ function compareCodes() {
     // sort alphabetically to conceal order
     revealCode.sort();
     console.log(revealCode);
+
+    for (i = 1; i <= 4; i++) {
+        document.getElementById(`g${guessNum}r${i}`).style.backgroundColor = revealCode[i-1];
+    }
+    
+    ansNum = 1;
+    guessNum ++;
     // return revealCode;
 }
-
-// add submit button to run compareCodes();

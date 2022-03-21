@@ -26,6 +26,13 @@
     grid-template-columns: 1fr 1fr;
 }
 
+.reveal > div {
+    background: white;
+    border-radius: 50%;
+    max-width: 20px;
+    max-height: 20px;    
+}
+
 .guess-row > div > div {
     height: 50px;
     width: 50px;
