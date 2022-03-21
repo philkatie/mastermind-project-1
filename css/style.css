@@ -1,0 +1,50 @@
+.game {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    gap: 1em;
+}
+
+.game > div {
+    background: rgb(213, 221, 224);
+    padding: 1em;
+}
+
+.game > div:nth-child(odd) {
+    background: rgb(194, 221, 231);
+}
+
+.guess-row > div {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 1em;
+    justify-content: stretch;
+    align-items: center;
+}
+
+.reveal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.guess-row > div > div {
+    height: 50px;
+    width: 50px;
+}
+
+.guess-row > div > div:nth-child(odd) {
+    background: rgb(202, 139, 163);
+    border: #333 1px solid;
+}
+
+.guess-row > div > div:nth-child(even) {
+    background: rgb(184, 173, 178);
+    border: #333 1px solid;
+}
+
+img {
+    max-width: 50px;
+}
+
+#ts1 {
+    background-image: url("../ts1.jpeg")
+}

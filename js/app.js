@@ -31,3 +31,69 @@
 // 5. If player guesses max times and does not crack the secretCode
     // A. gameOver = true
     // B. losing condition
+
+// declare all state variables
+let guessNum = 1;
+let gameOver = false;
+const choices = ["ts1", "ts2", "ts3", "ts4", "ts5", "ts6"];
+let secretCode = [];
+let playerGuess = [];
+let revealCode = [];
+
+// setup event listeners
+
+document.querySelector('.answer-bank').addEventListener('click', handleClick);
+document.querySelector('button').addEventListener('click', compareCodes);
+
+// init function to start game
+function init() {
+    secretCode = [];
+    revealCode = [];
+    // initialize secretCode
+    while (secretCode.length < 4) {
+        let addToCode = choices[Math.floor(Math.random() * choices.length)];
+        if (secretCode.includes(addToCode)) {
+        } else {
+            secretCode.push(addToCode);
+        }
+    }
+    gameOver = false;
+    playerGuess = [];
+    console.log(secretCode);
+}
+
+init();
+
+// clicking from answer bank to playerGuess
+function handleClick(e) {
+    if (e.target.tagName === "IMG") {
+        if (playerGuess.length < 4) {
+            playerGuess.push(e.target.id);
+            console.log(playerGuess);
+        }
+    }
+}
+
+// comparing playerGuess to secretCode;
+
+function compareCodes() {
+    // if (playerGuess.length = 4) {
+        playerGuess.forEach(function(elem, i) {
+            // check for inclusion
+            if (secretCode.includes(elem)) {
+                // check for position
+                if (playerGuess[i] === secretCode[i]) {
+                    revealCode.push('green');
+                } else {
+                    revealCode.push('orange');
+                };
+            } else revealCode.push('white');
+        });
+    // }
+    // sort alphabetically to conceal order
+    revealCode.sort();
+    console.log(revealCode);
+    // return revealCode;
+}
+
+// add submit button to run compareCodes();
