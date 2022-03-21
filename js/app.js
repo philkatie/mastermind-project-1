@@ -51,6 +51,7 @@ document.querySelector('.replay').addEventListener('click', init);
 function init() {
     secretCode = [];
     revealCode = [];
+    document.querySelector('h2').innerText = 'Game on!';
     // initialize secretCode
     while (secretCode.length < 4) {
         let addToCode = choices[Math.floor(Math.random() * choices.length)];
@@ -94,6 +95,8 @@ function compareCodes() {
 
     //need code to not submit early
     //need code for reveal dupes
+    //need code to not keep guessing if solved
+
 
     if (playerGuess.length = 4) {
         // let r = 1;

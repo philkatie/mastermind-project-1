@@ -30,12 +30,15 @@
     background: white;
     border-radius: 50%;
     max-width: 20px;
-    max-height: 20px;    
+    max-height: 20px;
+    padding: 4px;
+    margin: 4px; 
 }
 
 .guess-row > div > div {
     height: 50px;
     width: 50px;
+    margin: 5px 0 5px 0;
 }
 
 .guess-row > div > div:nth-child(odd) {
