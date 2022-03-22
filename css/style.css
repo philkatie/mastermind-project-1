@@ -1,4 +1,13 @@
+body {
+    background:rgb(225, 232, 235)
+}
+
+h4 {
+    margin: 0 auto;
+}
+
 .game {
+    margin: 0 auto;
     display: grid;
     gap: 1em;
     max-width: 500px;
@@ -7,20 +16,15 @@
 }
 
 .game > div {
-    background: rgb(213, 221, 224);
-    padding: 1em;
-}
-
-.game > div:nth-child(odd) {
     background: rgb(194, 221, 231);
+    padding: 1em;
 }
 
 .guess-row > div {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     row-gap: 1em;
-    justify-content: stretch;
-    align-items: center;
+
 }
 
 .reveal {
@@ -40,7 +44,7 @@
 .guess-row > div > div {
     height: 50px;
     width: 50px;
-    margin: 5px 0 5px 0;
+    margin: 5px 0 0 0;
 }
 
 .guess-row > div > div:nth-child(odd) {
