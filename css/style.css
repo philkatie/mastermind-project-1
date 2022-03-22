@@ -1,9 +1,16 @@
 body {
-    background:rgb(225, 232, 235)
+    background:rgb(225, 232, 235);
+    text-align: center;
 }
 
 h4 {
     margin: 0 auto;
+}
+
+h1, h2, h3, p {
+    max-width: 700px;
+    margin: 5px auto;
+    padding: 5px;
 }
 
 .game {
@@ -64,3 +71,4 @@ img {
 #ts1 {
     background-image: url("../ts1.jpeg")
 }
+
