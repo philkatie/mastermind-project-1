@@ -1,7 +1,9 @@
 .game {
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr;
     gap: 1em;
+    max-width: 500px;
+    justify-content: center;
+    align-content: center;
 }
 
 .game > div {
