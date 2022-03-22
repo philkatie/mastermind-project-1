@@ -66,6 +66,8 @@ h1, h2, h3, p {
 
 img {
     max-width: 50px;
+    margin: 6px 0;
+    /* padding: 0 2px 0 2px; */
 }
 
 #ts1 {
