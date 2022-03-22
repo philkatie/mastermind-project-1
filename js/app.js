@@ -40,6 +40,8 @@ const choices = ["ts1", "ts2", "ts3", "ts4", "ts5", "ts6"];
 let secretCode = [];
 let playerGuess = [];
 let revealCode = [];
+const winQuotes =["Traitors never win... but you did!","Players gonna play, play, play, play, play... and win!", "You played this game good and right, and won!"]
+const loseQuotes = ["This is one prize you couldn't cheat to win. You lose!", "This is a ruthless game... and you lost!", "You've lost the one real thing you've ever known (this game)", "Lost again with no surprises."]
 
 // setup event listeners
 
@@ -82,7 +84,7 @@ function handleClick(e) {
         if (playerGuess.length < 4) {
             playerGuess.push(e.target.id);
             let currentGuess = document.getElementById(`g${guessNum}a${ansNum}`);
-            currentGuess.innerHTML = `<img src="${e.target.id}.jpeg">`
+            currentGuess.innerHTML = `<img src="imgs/${e.target.id}.jpeg">`
             console.log(playerGuess);
             ansNum ++;
         }
@@ -125,10 +127,10 @@ function compareCodes() {
         playerGuess[1] === secretCode[1] && 
         playerGuess[2] === secretCode[2] &&
         playerGuess[3] === secretCode[3]) {
-        document.querySelector('h2').innerText = 'You win!';
+        document.querySelector('h2').innerText = winQuotes[Math.floor(Math.random() * winQuotes.length)];
         gameOver = true;
     } else if (guessNum === 8) {
-        document.querySelector('h2').innerText = 'You lose!';
+        document.querySelector('h2').innerText = loseQuotes[Math.floor(Math.random() * loseQuotes.length)];
         gameOver = true;
     }
 
@@ -140,7 +142,7 @@ function compareCodes() {
 
     if (gameOver === true) {
         for (i = 1; i <=4; i++) {
-            document.getElementById(`sc${i}`).innerHTML = `<img src="${secretCode[i-1]}.jpeg">`
+            document.getElementById(`sc${i}`).innerHTML = `<img src="imgs/${secretCode[i-1]}.jpeg">`
         }
     }
 }
