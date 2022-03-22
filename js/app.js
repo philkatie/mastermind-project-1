@@ -80,13 +80,15 @@ init();
 
 // clicking from answer bank to playerGuess
 function handleClick(e) {
-    if (e.target.tagName === "IMG") {
-        if (playerGuess.length < 4) {
-            playerGuess.push(e.target.id);
-            let currentGuess = document.getElementById(`g${guessNum}a${ansNum}`);
-            currentGuess.innerHTML = `<img src="imgs/${e.target.id}.jpeg">`
-            console.log(playerGuess);
-            ansNum ++;
+    if (gameOver !== true) {
+        if (e.target.tagName === "IMG") {
+            if (playerGuess.length < 4) {
+                playerGuess.push(e.target.id);
+                let currentGuess = document.getElementById(`g${guessNum}a${ansNum}`);
+                currentGuess.innerHTML = `<img src="imgs/${e.target.id}.jpeg">`
+                console.log(playerGuess);
+                ansNum ++;
+            }
         }
     }
 }
@@ -95,54 +97,83 @@ function handleClick(e) {
 
 function compareCodes() {
 
-    //need code to not submit early
     //need code for reveal dupes
-    //need code to not keep guessing if solved
 
+    if (gameOver !== true) {
+        if (playerGuess.length === 4) {
+            // let r = 1;
+            playerGuess.forEach(function(elem, i) {
+                // check for inclusion
+                if (secretCode.includes(elem)) {
+                    // check for position
+                    if (playerGuess[i] === secretCode[i]) {
+                        revealCode.push('green');
+                    } else {
+                        revealCode.push('orange');
+                    };
+                } else revealCode.push('white');
+            });
+            revealCode.sort();
+            console.log(revealCode);
 
-    if (playerGuess.length = 4) {
-        // let r = 1;
-        playerGuess.forEach(function(elem, i) {
-            // check for inclusion
-            if (secretCode.includes(elem)) {
-                // check for position
-                if (playerGuess[i] === secretCode[i]) {
-                    revealCode.push('green');
-                } else {
-                    revealCode.push('orange');
-                };
-            } else revealCode.push('white');
-        });
-    }
-    // sort alphabetically to conceal order
-    revealCode.sort();
-    console.log(revealCode);
+            for (i = 1; i <= 4; i++) {
+                document.getElementById(`g${guessNum}r${i}`).style.backgroundColor = revealCode[i-1];
+            }
 
-    for (i = 1; i <= 4; i++) {
-        document.getElementById(`g${guessNum}r${i}`).style.backgroundColor = revealCode[i-1];
-    }
+            if (
+                playerGuess[0] === secretCode[0] && 
+                playerGuess[1] === secretCode[1] && 
+                playerGuess[2] === secretCode[2] &&
+                playerGuess[3] === secretCode[3]) {
+                document.querySelector('h2').innerText = winQuotes[Math.floor(Math.random() * winQuotes.length)];
+                gameOver = true;
+            } else if (guessNum === 8) {
+                document.querySelector('h2').innerText = loseQuotes[Math.floor(Math.random() * loseQuotes.length)];
+                gameOver = true;
+            }
 
-    if (
-        playerGuess[0] === secretCode[0] && 
-        playerGuess[1] === secretCode[1] && 
-        playerGuess[2] === secretCode[2] &&
-        playerGuess[3] === secretCode[3]) {
-        document.querySelector('h2').innerText = winQuotes[Math.floor(Math.random() * winQuotes.length)];
-        gameOver = true;
-    } else if (guessNum === 8) {
-        document.querySelector('h2').innerText = loseQuotes[Math.floor(Math.random() * loseQuotes.length)];
-        gameOver = true;
-    }
+            ansNum = 1;
+            guessNum ++;
+            playerGuess = [];
+            revealCode = [];
+            // return revealCode;
 
-    ansNum = 1;
-    guessNum ++;
-    playerGuess = [];
-    revealCode = [];
-    // return revealCode;
-
-    if (gameOver === true) {
-        for (i = 1; i <=4; i++) {
-            document.getElementById(`sc${i}`).innerHTML = `<img src="imgs/${secretCode[i-1]}.jpeg">`
+            if (gameOver === true) {
+                for (i = 1; i <=4; i++) {
+                    document.getElementById(`sc${i}`).innerHTML = `<img src="imgs/${secretCode[i-1]}.jpeg">`
+                }
+            }
         }
     }
+    // sort alphabetically to conceal order
+        // revealCode.sort();
+        // console.log(revealCode);
+
+        // for (i = 1; i <= 4; i++) {
+        //     document.getElementById(`g${guessNum}r${i}`).style.backgroundColor = revealCode[i-1];
+        // }
+
+        // if (
+        //     playerGuess[0] === secretCode[0] && 
+        //     playerGuess[1] === secretCode[1] && 
+        //     playerGuess[2] === secretCode[2] &&
+        //     playerGuess[3] === secretCode[3]) {
+        //     document.querySelector('h2').innerText = winQuotes[Math.floor(Math.random() * winQuotes.length)];
+        //     gameOver = true;
+        // } else if (guessNum === 8) {
+        //     document.querySelector('h2').innerText = loseQuotes[Math.floor(Math.random() * loseQuotes.length)];
+        //     gameOver = true;
+        // }
+
+        // ansNum = 1;
+        // guessNum ++;
+        // playerGuess = [];
+        // revealCode = [];
+        // // return revealCode;
+
+        // if (gameOver === true) {
+        //     for (i = 1; i <=4; i++) {
+        //         document.getElementById(`sc${i}`).innerHTML = `<img src="imgs/${secretCode[i-1]}.jpeg">`
+        //     }
+        // }
 }
