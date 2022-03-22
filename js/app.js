@@ -145,35 +145,4 @@ function compareCodes() {
             }
         }
     }
-    // sort alphabetically to conceal order
-        // revealCode.sort();
-        // console.log(revealCode);
-
-        // for (i = 1; i <= 4; i++) {
-        //     document.getElementById(`g${guessNum}r${i}`).style.backgroundColor = revealCode[i-1];
-        // }
-
-        // if (
-        //     playerGuess[0] === secretCode[0] && 
-        //     playerGuess[1] === secretCode[1] && 
-        //     playerGuess[2] === secretCode[2] &&
-        //     playerGuess[3] === secretCode[3]) {
-        //     document.querySelector('h2').innerText = winQuotes[Math.floor(Math.random() * winQuotes.length)];
-        //     gameOver = true;
-        // } else if (guessNum === 8) {
-        //     document.querySelector('h2').innerText = loseQuotes[Math.floor(Math.random() * loseQuotes.length)];
-        //     gameOver = true;
-        // }
-
-        // ansNum = 1;
-        // guessNum ++;
-        // playerGuess = [];
-        // revealCode = [];
-        // // return revealCode;
-
-        // if (gameOver === true) {
-        //     for (i = 1; i <=4; i++) {
-        //         document.getElementById(`sc${i}`).innerHTML = `<img src="imgs/${secretCode[i-1]}.jpeg">`
-        //     }
-        // }
 }
