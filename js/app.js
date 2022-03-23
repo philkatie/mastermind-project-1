@@ -53,7 +53,7 @@ document.querySelector('.replay').addEventListener('click', init);
 function init() {
     secretCode = [];
     revealCode = [];
-    document.querySelector('h2').innerText = 'Game on!';
+    document.querySelector('h2').innerText = 'Let the Games Begin!';
     // initialize secretCode
     while (secretCode.length < 4) {
         let addToCode = choices[Math.floor(Math.random() * choices.length)];
