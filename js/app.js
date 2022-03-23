@@ -2,9 +2,10 @@
 // 1. add logic gate to prevent reveal from providing duplicate results
 // 2. clean up code - I think a lot of these should be separate functions
 // 3. add sound effects
-// 4. add difficulty - allow secret code to have dupes
-// 5. add difficulty - add albums
-
+// 4. swap images to be hosted on imgur
+// 5. add difficulty - allow secret code to have dupes
+// 6. add difficulty - add albums
+  
 // Pseudocode - Taylor Swift's Masters Mind
 // 1. Initialize variables/state
     // A. albums Array of 6 choiced
@@ -90,7 +91,7 @@ function handleClick(e) {
             if (playerGuess.length < 4) {
                 playerGuess.push(e.target.id);
                 let currentGuess = document.getElementById(`g${guessNum}a${ansNum}`);
-                currentGuess.innerHTML = `<img src="imgs/${e.target.id}.jpeg">`
+                currentGuess.innerHTML = `<img src="assets/${e.target.id}.jpeg">`
                 ansNum ++;
             }
         }
@@ -121,11 +122,11 @@ function compareCodes() {
                 if (secretCode.includes(elem)) {
                     // check for position
                     if (playerGuess[i] === secretCode[i]) {
-                        revealCode.push('green');
+                        revealCode.push('#386238');
                     } else {
-                        revealCode.push('orange');
+                        revealCode.push('#458ab8');
                     };
-                } else revealCode.push('white');
+                } else revealCode.push('#ffffff');
             });
             // sort reveal code so it doesn't correspond to specific guess slots; 
             // intentionally chose colors in alphabetical order bc it seemed easiest
@@ -158,7 +159,7 @@ function compareCodes() {
             // if game is over, reveal secret code
             if (gameOver === true) {
                 for (i = 1; i <=4; i++) {
-                    document.getElementById(`sc${i}`).innerHTML = `<img src="imgs/${secretCode[i-1]}.jpeg">`
+                    document.getElementById(`sc${i}`).innerHTML = `<img src="assets/${secretCode[i-1]}.jpeg">`
                 }
             }
         }

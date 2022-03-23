@@ -1,7 +1,8 @@
 
 
 body {
-    background:rgb(225, 232, 235);
+    background-image: url(https://cdn.wallpapersafari.com/60/4/eqhLZm.png);
+    background-size: cover;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
 }
@@ -43,7 +44,6 @@ h1, h2, h3, p {
 }
 
 .reveal > div {
-    background: white;
     border-radius: 50%;
     max-width: 20px;
     max-height: 20px;
