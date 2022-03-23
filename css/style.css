@@ -77,10 +77,6 @@ img {
     max-width: 50px;
 }
 
-#ts1 {
-    background-image: url("../ts1.jpeg")
-}
-
 button {
     border-radius: 15%;
     background-color: rgb(202, 139, 163);

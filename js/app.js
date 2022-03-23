@@ -3,8 +3,9 @@
 // 2. clean up code - I think a lot of these should be separate functions
 // 3. add sound effects
 // 4. swap images to be hosted on imgur
-// 5. add difficulty - allow secret code to have dupes
-// 6. add difficulty - add albums
+// 5. remove guess on click - slice method?
+// 6. add difficulty - allow secret code to have dupes
+// 7. add difficulty - add albums
   
 // Pseudocode - Taylor Swift's Masters Mind
 // 1. Initialize variables/state
@@ -101,23 +102,53 @@ function handleClick(e) {
 // comparing playerGuess to secretCode;
 function compareCodes() {
 
+    // this is real inelegant but we gotta do what we gotta do
+    let a1 = 0;
+    let a2 = 0;
+    let a3 = 0;
+    let a4 = 0;
+    let a5 = 0;
+    let a6 = 0;
+    let a = '';
+
+
     // check for game over - prevent guessing if game is over
     if (gameOver !== true) {
+
         // check for complete guess - prevent submitting guess before all guess slots are full
         if (playerGuess.length === 4) {
             // for each guess slot
 
-            //need code for reveal dupes
-            
+            // need code for reveal dupes
+
             // count how many times each guess was guessed
             let guessTally = playerGuess.reduce(function(acc, elem) {
                 acc[elem] = acc[elem] ? acc[elem] + 1 : 1;
                 return acc;
             }, {});
             console.log(guessTally);
-            console.log(guessTally.ts1);
+
+            if (guessTally.ts1 !== undefined) {
+                a1 += guessTally.ts1;
+            };
+            if (guessTally.ts2 !== undefined) {
+                a2 += guessTally.ts2;
+            };
+            if (guessTally.ts3 !== undefined) {
+                a3 += guessTally.ts3;
+            };
+            if (guessTally.ts4 !== undefined) {
+                a4 += guessTally.ts4;
+            };
+            if (guessTally.ts5 !== undefined) {
+                a5 += guessTally.ts5;
+            };
+            if (guessTally.ts6 !== undefined) {
+                a6 += guessTally.ts6;
+            };
 
             playerGuess.forEach(function(elem, i) {
+                console.log(elem);
                 // check for inclusion
                 if (secretCode.includes(elem)) {
                     // check for position
