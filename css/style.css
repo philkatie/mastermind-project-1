@@ -57,15 +57,21 @@ h1, h2, h3, p {
     margin: 5px 0 0 0;
 }
 
-.guess-row > div > div:nth-child(odd) {
+.guess-row > div > div{
+    background: rgb(184, 173, 178);
+    border: #333 1px solid;
+}
+
+.guess-row > div > div:nth-child(5n) {
     background: rgb(202, 139, 163);
     border: #333 1px solid;
 }
 
-.guess-row > div > div:nth-child(even) {
-    background: rgb(184, 173, 178);
+#sc1, #sc2, #sc3, #sc4{
+    background: rgb(202, 139, 163);
     border: #333 1px solid;
 }
+
 
 img {
     max-width: 50px;
