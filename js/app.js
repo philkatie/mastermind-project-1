@@ -1,3 +1,10 @@
+// To Do
+// 1. add logic gate to prevent reveal from providing duplicate results
+// 2. clean up code - I think a lot of these should be separate functions
+// 3. add sound effects
+// 4. add difficulty - allow secret code to have dupes
+// 5. add difficulty - add albums
+
 // Pseudocode - Taylor Swift's Masters Mind
 // 1. Initialize variables/state
     // A. albums Array of 6 choiced
@@ -44,7 +51,6 @@ const winQuotes =["Traitors never win... but you did!","Players gonna play, play
 const loseQuotes = ["This is one prize you couldn't cheat to win. You lose!", "This is a ruthless game... and you lost!", "You've lost the one real thing you've ever known (this game)", "Lost again with no surprises."]
 
 // setup event listeners
-
 document.querySelector('.answer-bank').addEventListener('click', handleClick);
 document.querySelector('.submit').addEventListener('click', compareCodes);
 document.querySelector('.replay').addEventListener('click', init);
@@ -66,7 +72,6 @@ function init() {
     playerGuess = [];
     guessNum = 1;
     ansNum = 1;
-    console.log(secretCode);
     for (i = 1; i <= 4; i++) {
         for (j = 1; j <=8; j++) {
             document.getElementById(`g${j}a${i}`).innerHTML = '';
@@ -86,7 +91,6 @@ function handleClick(e) {
                 playerGuess.push(e.target.id);
                 let currentGuess = document.getElementById(`g${guessNum}a${ansNum}`);
                 currentGuess.innerHTML = `<img src="imgs/${e.target.id}.jpeg">`
-                console.log(playerGuess);
                 ansNum ++;
             }
         }
@@ -94,14 +98,24 @@ function handleClick(e) {
 }
 
 // comparing playerGuess to secretCode;
-
 function compareCodes() {
 
-    //need code for reveal dupes
-
+    // check for game over - prevent guessing if game is over
     if (gameOver !== true) {
+        // check for complete guess - prevent submitting guess before all guess slots are full
         if (playerGuess.length === 4) {
-            // let r = 1;
+            // for each guess slot
+
+            //need code for reveal dupes
+            
+            // count how many times each guess was guessed
+            let guessTally = playerGuess.reduce(function(acc, elem) {
+                acc[elem] = acc[elem] ? acc[elem] + 1 : 1;
+                return acc;
+            }, {});
+            console.log(guessTally);
+            console.log(guessTally.ts1);
+
             playerGuess.forEach(function(elem, i) {
                 // check for inclusion
                 if (secretCode.includes(elem)) {
@@ -113,13 +127,16 @@ function compareCodes() {
                     };
                 } else revealCode.push('white');
             });
+            // sort reveal code so it doesn't correspond to specific guess slots; 
+            // intentionally chose colors in alphabetical order bc it seemed easiest
             revealCode.sort();
-            console.log(revealCode);
-
+            
+            // pushing reveal code colors to user
             for (i = 1; i <= 4; i++) {
                 document.getElementById(`g${guessNum}r${i}`).style.backgroundColor = revealCode[i-1];
             }
-
+            
+            // Check for win/lose condition
             if (
                 playerGuess[0] === secretCode[0] && 
                 playerGuess[1] === secretCode[1] && 
@@ -131,13 +148,14 @@ function compareCodes() {
                 document.querySelector('h2').innerText = loseQuotes[Math.floor(Math.random() * loseQuotes.length)];
                 gameOver = true;
             }
-
+            
+            // reset indices and arrays for next guess
             ansNum = 1;
             guessNum ++;
             playerGuess = [];
             revealCode = [];
-            // return revealCode;
-
+            
+            // if game is over, reveal secret code
             if (gameOver === true) {
                 for (i = 1; i <=4; i++) {
                     document.getElementById(`sc${i}`).innerHTML = `<img src="imgs/${secretCode[i-1]}.jpeg">`
