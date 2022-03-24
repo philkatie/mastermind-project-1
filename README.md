@@ -13,7 +13,7 @@ There are Taylor Swift Easter Eggs throughout the game, like the lyric-themed wi
 ## Wireframe
 
 ### Original Concept Wireframe
-<img alt="Original Wireframe of Mastermind Game" src="https://user-images.githubusercontent.com/32117930/160020551-5e7e1bdc-8c6a-40dc-a094-e38216032f7c.png"
+<img alt="Original Wireframe of Mastermind Game" src="https://user-images.githubusercontent.com/32117930/160020551-5e7e1bdc-8c6a-40dc-a094-e38216032f7c.png">
 
 
 ### Final Game Screenshots
