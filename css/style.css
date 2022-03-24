@@ -55,9 +55,6 @@ h1, h2, h3, p {
     height: 50px;
     width: 50px;
     margin: 5px 0 0 0;
-}
-
-.guess-row > div > div{
     background: rgb(184, 173, 178);
     border: #333 1px solid;
 }
