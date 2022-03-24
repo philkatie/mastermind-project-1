@@ -16,9 +16,17 @@ document.querySelector('.replay').addEventListener('click', init);
 
 // init function to start game
 function init() {
+    // reset variables
     secretCode = [];
     revealCode = [];
+    gameOver = false;
+    playerGuess = [];
+    guessNum = 1;
+    ansNum = 1;
+
+    // reset win/loss message to game start message
     document.querySelector('h2').innerText = 'Let the Games Begin!';
+
     // initialize secretCode
     while (secretCode.length < 4) {
         let addToCode = choices[Math.floor(Math.random() * choices.length)];
@@ -27,14 +35,12 @@ function init() {
             secretCode.push(addToCode);
         }
     }
-    gameOver = false;
-    playerGuess = [];
-    guessNum = 1;
-    ansNum = 1;
+
+    // reset guesses and reveal HTML to empty game board
     for (i = 1; i <= 4; i++) {
         for (j = 1; j <=8; j++) {
             document.getElementById(`g${j}a${i}`).innerHTML = '';
-            document.getElementById(`g${j}r${i}`).style.backgroundColor = 'white';
+            document.getElementById(`g${j}r${i}`).style.backgroundColor = '#ffffff';
         }
         document.getElementById(`sc${i}`).innerHTML = '';
     }
@@ -74,6 +80,7 @@ function compareCodes() {
                     };
                 } else revealCode.push('#ffffff');
             });
+
             // sort reveal code so it doesn't correspond to specific guess slots; 
             // intentionally chose colors in alphabetical order bc it seemed easiest
             revealCode.sort();
@@ -104,6 +111,7 @@ function compareCodes() {
 
 // function to check for win condition
 function checkWin() {
+    // checking individual elements of array against each other or if user has maxed out guesses
     if (
         playerGuess[0] === secretCode[0] && 
         playerGuess[1] === secretCode[1] && 
